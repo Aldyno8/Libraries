@@ -46,9 +46,11 @@ class ForumListView(APIView):
             return Response({"message": str(error)}, status=status.HTTP_400_BAD_REQUEST)
 
 class ForumDetails(APIView):
-    def get(self, request):
+    def get(self, request, pk):
+        
         try:
-            forum_id = request.query_params.get('id')
+            forum_id = pk
+            print(pk)
 
             if not forum_id:
                 return Response({"message": "Forum ID is required."}, status=status.HTTP_400_BAD_REQUEST)
